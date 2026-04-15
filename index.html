@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مياه آسفي النقية | مستقبل بيع المياه</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Futuristic CSS Variables */
+        :root {
+            --bg-dark: #050a15;
+            --neon-blue: #00f0ff;
+            --neon-blue-dim: rgba(0, 240, 255, 0.2);
+            --neon-green: #25D366; /* WhatsApp Green */
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /* Default Font for Arabic */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Font override for LTR languages */
+        html[dir="ltr"] body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Glassmorphism Floating Navigation */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+        }
+
+        nav {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-shadow: 0 0 10px var(--neon-blue-dim);
+        }
+
+        .logo i {
+            color: var(--neon-blue);
+            filter: drop-shadow(0 0 5px var(--neon-blue));
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            right: 0;
+            background-color: var(--neon-blue);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--neon-blue);
+        }
+        
+        html[dir="ltr"] .nav-links a::after {
+            right: auto;
+            left: 0;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Language Selector Style */
+        .lang-select {
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue-dim);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .lang-select:hover, .lang-select:focus {
+            box-shadow: 0 0 10px var(--neon-blue-dim);
+            border-color: var(--neon-blue);
+        }
+
+        .lang-select option {
+            background: var(--bg-dark);
+            color: var(--text-main);
+        }
+
+        /* Futuristic Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        /* UPDATED BACKGROUND CODE HERE */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Uses your local image and adds a semi-transparent dark gradient so text remains readable */
+            background: linear-gradient(to bottom, rgba(5, 10, 21, 0.6), rgba(5, 10, 21, 0.8)), url('hero-bg.jpg') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(to left, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+        }
+
+        html[dir="ltr"] .hero h1 {
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #cbd5e1; /* Made slightly lighter to contrast the background image */
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Added shadow for readability */
+        }
+
+        .glow-button {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--neon-blue-dim), inset 0 0 15px var(--neon-blue-dim);
+            backdrop-filter: blur(5px);
+        }
+
+        .glow-button:hover {
+            background: var(--neon-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px var(--neon-blue), inset 0 0 10px rgba(255,255,255,0.5);
+            transform: scale(1.05);
+        }
+
+        .glow-button i {
+            margin-right: 10px;
+        }
+        
+        html[dir="ltr"] .glow-button i {
+            margin-right: 0;
+            margin-left: 10px;
+            transform: rotate(180deg);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 4rem;
+            color: var(--text-main);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(0, 240, 255, 0.05) 100%);
+            z-index: 0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15);
+        }
+
+        .feature-icon {
+            position: relative;
+            z-index: 1;
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px var(--neon-blue-dim));
+        }
+
+        .feature-card h3 {
+            position: relative;
+            z-index: 1;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .feature-card p {
+            position: relative;
+            z-index: 1;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.03));
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--neon-blue-dim);
+            padding: 4rem 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 240, 255, 0.05);
+        }
+
+        .owner-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--neon-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--neon-blue-dim);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 15px;
+            transition: background 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 240, 255, 0.05);
+        }
+
+        .contact-item i {
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+        }
+
+        .contact-item a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-family: 'Inter', monospace;
+            font-size: 1.3rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue-dim);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            left: 40px; /* Left for RTL, Right for LTR */
+            background-color: var(--neon-green);
+            color: #FFF;
+            border-radius: 50px;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        html[dir="ltr"] .whatsapp-float {
+            left: auto;
+            right: 40px;
+        }
+
+        .whatsapp-float i {
+            font-size: 1.8rem;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
+            color: #fff;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 1rem;
+            background: #02040a;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header { width: 95%; top: 10px; }
+            nav { padding: 1rem; flex-direction: column; gap: 1rem; border-radius: 20px;}
+            .nav-controls { width: 100%; justify-content: space-between; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .contact-card { padding: 2rem 1.5rem; }
+            .whatsapp-float span { display: none; } /* Icon only on mobile */
+            .whatsapp-float { padding: 15px; border-radius: 50%; bottom: 20px; left: 20px; }
+            html[dir="ltr"] .whatsapp-float { left: auto; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <i class="fa-solid fa-droplet"></i> <span id="logoText">مياه آسفي</span>
+            </a>
+            
+            <div class="nav-controls">
+                <ul class="nav-links">
+                    <li><a href="#home" id="navHome">الرئيسية</a></li>
+                    <li><a href="#features" id="navFeatures">المميزات</a></li>
+                    <li><a href="#contact" id="navContact">تواصل معنا</a></li>
+                </ul>
+                <select id="languageSelect" class="lang-select" onchange="changeLanguage()">
+                    <option value="ar">العربية</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 id="heroTitle">مياه نقية ومنعشة <br>عند الطلب في آسفي</h1>
+            <p id="heroDesc">نقدم لك الجيل القادم من آلات بيع المياه الآلية. تقنية متطورة، بأسعار معقولة، ومتوفرة في حيك على مدار الساعة طوال أيام الأسبوع.</p>
+            <a href="#contact" class="glow-button"><span id="heroBtn">ابحث عن آلة</span> <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title" id="featuresTitle">لماذا تختار أنظمتنا؟</h2>
+        <div class="features-grid">
+            
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+                <h3 id="feat1Title">فائقة النقاء</h3>
+                <p id="feat1Desc">تستخدم آلاتنا تقنية ترشيح متقدمة متعددة المراحل تعتمد على أحدث معايير الصناعة لضمان أن كل قطرة آمنة، نقية ومنعشة تماماً.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-clock"></i></div>
+                <h3 id="feat2Title">متاحة دائماً 24/7</h3>
+                <p id="feat2Desc">واجهة آلية بالكامل تتيح لك الحصول على مياه شرب نظيفة 24 ساعة في اليوم، 7 أيام في الأسبوع. لا داعي للانتظار أو الاعتماد على المتاجر.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+                <h3 id="feat3Title">صديقة للبيئة</h3>
+                <p id="feat3Desc">نظام ذكي يشجع على إعادة التعبئة. أحضر زجاجاتك الخاصة وساعدنا في القضاء على النفايات البلاستيكية ذات الاستخدام الواحد في مدينة آسفي الجميلة.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-card">
+                <div class="owner-badge" id="contactBadge">الإدارة المركزية</div>
+                <h3 id="contactTitle" style="color: #fff; font-size: 2.2rem;">تواصل مع المؤسسة</h3>
+                <p id="contactDesc" style="color: var(--text-muted); font-size: 1.1rem;">
+                    هل لديك استفسارات فنية، أو ترغب في اقتراح موقع جديد لتركيب آلة بيع؟ تواصل مباشرة مع الإدارة.
+                </p>
+                
+                <div class="contact-methods">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span style="font-size: 1.3rem; font-weight: 700;">Nadiya El Hani</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone-waveform"></i>
+                        <a href="tel:+212776668866" dir="ltr">+212 776 668 866</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:nadiya.ai@gmail.com">nadiya.ai@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        <span id="locationText" style="font-size: 1.2rem;">آسفي، المغرب</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/212776668866" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span id="waText">تحدث معنا</span>
+    </a>
+
+    <footer>
+        <p id="footerText">&copy; 2026 شبكة مياه آسفي الآلية. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                logoText: "مياه آسفي",
+                navHome: "الرئيسية",
+                navFeatures: "المميزات",
+                navContact: "تواصل معنا",
+                heroTitle: "مياه نقية ومنعشة <br>عند الطلب في آسفي",
+                heroDesc: "نقدم لك الجيل القادم من آلات بيع المياه الآلية. تقنية متطورة، بأسعار معقولة، ومتوفرة في حيك على مدار الساعة طوال أيام الأسبوع.",
+                heroBtn: "ابحث عن آلة",
+                featuresTitle: "لماذا تختار أنظمتنا؟",
+                feat1Title: "فائقة النقاء",
+                feat1Desc: "تستخدم آلاتنا تقنية ترشيح متقدمة متعددة المراحل تعتمد على أحدث معايير الصناعة لضمان أن كل قطرة آمنة، نقية ومنعشة تماماً.",
+                feat2Title: "متاحة دائماً 24/7",
+                feat2Desc: "واجهة آلية بالكامل تتيح لك الحصول على مياه شرب نظيفة 24 ساعة في اليوم، 7 أيام في الأسبوع. لا داعي للانتظار أو الاعتماد على المتاجر.",
+                feat3Title: "صديقة للبيئة",
+                feat3Desc: "نظام ذكي يشجع على إعادة التعبئة. أحضر زجاجاتك الخاصة وساعدنا في القضاء على النفايات البلاستيكية ذات الاستخدام الواحد في مدينة آسفي الجميلة.",
+                contactBadge: "الإدارة المركزية",
+                contactTitle: "تواصل مع المؤسسة",
+                contactDesc: "هل لديك استفسارات فنية، أو ترغب في اقتراح موقع جديد لتركيب آلة بيع؟ تواصل مباشرة مع الإدارة.",
+                locationText: "آسفي، المغرب",
+                waText: "تحدث معنا",
+                footerText: "© 2026 شبكة مياه آسفي الآلية. جميع الحقوق محفوظة."
+            },
+            en: {
+                logoText: "Safi Water",
+                navHome: "Home",
+                navFeatures: "Features",
+                navContact: "Contact",
+                heroTitle: "Pure, Refreshing Water <br>On Demand in Safi",
+                heroDesc: "Introducing the next generation of automated water vending. Advanced technology, affordable, and available in your neighborhood 24/7.",
+                heroBtn: "Find a Machine",
+                featuresTitle: "Why Choose Our Systems?",
+                feat1Title: "Ultra-Purified",
+                feat1Desc: "Our machines use advanced multi-stage filtration based on the latest industry standards to ensure every drop is perfectly safe, pure, and refreshing.",
+                feat2Title: "Always Available 24/7",
+                feat2Desc: "A fully automated interface allowing you to get clean drinking water 24 hours a day, 7 days a week. No waiting or relying on stores.",
+                feat3Title: "Eco-Friendly",
+                feat3Desc: "A smart system that encourages refilling. Bring your own bottles and help us eliminate single-use plastic waste in beautiful Safi.",
+                contactBadge: "Central Management",
+                contactTitle: "Contact the Founder",
+                contactDesc: "Have technical questions or want to suggest a new vending machine location? Reach out directly to management.",
+                locationText: "Safi, Morocco",
+                waText: "Chat with us",
+                footerText: "© 2026 Safi Automated Water Network. All rights reserved."
+            },
+            fr: {
+                logoText: "Eau de Safi",
+                navHome: "Accueil",
+                navFeatures: "Caractéristiques",
+                navContact: "Contact",
+                heroTitle: "Eau Pure et Rafraîchissante <br>À la Demande à Safi",
+                heroDesc: "Découvrez la nouvelle génération de distributeurs d'eau automatisés. Technologie de pointe, abordable et disponible dans votre quartier 24h/24 et 7j/7.",
+                heroBtn: "Trouver une Machine",
+                featuresTitle: "Pourquoi Choisir Nos Systèmes ?",
+                feat1Title: "Ultra-Purifiée",
+                feat1Desc: "Nos machines utilisent une filtration multi-étapes avancée basée sur les dernières normes de l'industrie pour garantir que chaque goutte est sûre, pure et rafraîchissante.",
+                feat2Title: "Toujours Disponible 24/7",
+                feat2Desc: "Une interface entièrement automatisée vous permettant d'obtenir de l'eau potable propre 24 heures sur 24, 7 jours sur 7. Plus d'attente.",
+                feat3Title: "Écologique",
+                feat3Desc: "Un système intelligent qui encourage la réutilisation. Apportez vos propres bouteilles et aidez-nous à éliminer les déchets plastiques à usage unique dans la belle ville de Safi.",
+                contactBadge: "Direction Centrale",
+                contactTitle: "Contacter la Fondatrice",
+                contactDesc: "Vous avez des questions techniques ou souhaitez suggérer un nouvel emplacement pour un distributeur ? Contactez directement la direction.",
+                locationText: "Safi, Maroc",
+                waText: "Discutez avec nous",
+                footerText: "© 2026 Réseau d'Eau Automatisé de Safi. Tous droits réservés."
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById("languageSelect").value;
+            const t = translations[lang];
+
+            // Update text elements via innerHTML to process <br> tags
+            document.getElementById("logoText").textContent = t.logoText;
+            document.getElementById("navHome").textContent = t.navHome;
+            document.getElementById("navFeatures").textContent = t.navFeatures;
+            document.getElementById("navContact").textContent = t.navContact;
+            document.getElementById("heroTitle").innerHTML = t.heroTitle;
+            document.getElementById("heroDesc").textContent = t.heroDesc;
+            document.getElementById("heroBtn").textContent = t.heroBtn;
+            document.getElementById("featuresTitle").textContent = t.featuresTitle;
+            document.getElementById("feat1Title").textContent = t.feat1Title;
+            document.getElementById("feat1Desc").textContent = t.feat1Desc;
+            document.getElementById("feat2Title").textContent = t.feat2Title;
+            document.getElementById("feat2Desc").textContent = t.feat2Desc;
+            document.getElementById("feat3Title").textContent = t.feat3Title;
+            document.getElementById("feat3Desc").textContent = t.feat3Desc;
+            document.getElementById("contactBadge").textContent = t.contactBadge;
+            document.getElementById("contactTitle").textContent = t.contactTitle;
+            document.getElementById("contactDesc").textContent = t.contactDesc;
+            document.getElementById("locationText").textContent = t.locationText;
+            document.getElementById("waText").textContent = t.waText;
+            document.getElementById("footerText").textContent = t.footerText;
+
+            // Handle RTL vs LTR Document Flow
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', lang);
+            }
+        }
+    </script>
+</body>
+</html>
